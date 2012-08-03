@@ -11,6 +11,6 @@ module.exports = {
   },
 
   say: function(msg) {
-    exec(pathto + ' ' + msg, {}, tellError);
+    exec(pathto + ' "' + msg + '"', {}, tellError);
   }
 }
