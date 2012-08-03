@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby -wKU
+
+require 'optparse'
+require 'synack'
+
+config = {}
+
+options = OptionParser.new do |opt|
+  opt.on('-s') { config[:server] = true }
+  opt.on('-h HOST') { |host| config[:host] = host }
+  opt.on('-p PORT') { |port| config[:port] = port }
+end
+
+options.parse!
+
+@host = config[:host] || 'localhost'
+@port = config[:port] || 11113
+
+if config[:server]
+  Synack::Server.start(
+    host: @host,
+    port: @port
+  )
+else
+  begin
+    client = Synack::Client.new(
+      host: @host,
+      port: @port
+    )
+
+    _input = ARGV[0] ? ARGV[0] : STDIN.read
+    client.say _input
+  rescue DRb::DRbConnError => e
+    puts "Some kind of connection error occurred: #{e}"
+  end
+end

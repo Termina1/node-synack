@@ -1,0 +1,15 @@
+{
+  "author": "Termina1",
+  "name": "node-synack",
+  "description": "Node wrapper over ruby gem synack",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:ResumUP/Tetris.git"
+  },
+  "main": "main.js",
+  "engines": {
+    "node": ">=0.6.1"
+  },
+  "dependencies": {}
+}

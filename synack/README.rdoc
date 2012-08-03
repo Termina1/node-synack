@@ -1,0 +1,45 @@
+= synack
+
+Synack is a client/server wrapper for https://github.com/alloy/terminal-notifier that allows
+arbitrary messages to be sent to Mac OS X Mountain Lion's Notification Center.
+
+Note that Terminal Notifier must be installed in your Applications directory for Synack to work
+properly.
+
+To start synack:
+
+  synack -s
+
+To send a message to your local Notification Center:
+
+  synack "Watson, come here, I need you."
+
+You can send messages to remote machines by specifying a host and port in the client:
+
+  synack -h my_remote_machine -p 11113 "I'm here, what did you want?"
+
+You can use UNIX pipes to send messages (first line of input only, for now):
+
+  echo 'Foo to you, sir.' | synack
+
+You can even invoke it from within a Ruby or Rails application:
+
+    def log_remote_event(event_name)
+      Synack::Client.new(:host => '10.0.1.1').say("Event #{event_name} captured")
+    end
+
+== Contributing to synack
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2012 Corey Ehmke and Max Thom Stahl. See LICENSE.txt for
+further details.
+
