@@ -7,7 +7,7 @@ tellError = function(error) {
 
 module.exports = {
   init: function() {
-    exec(pathto + ' -s', {}, tellError);
+    exec(pathto + ' -s -p 11114', {}, tellError);
   },
 
   say: function(msg) {
