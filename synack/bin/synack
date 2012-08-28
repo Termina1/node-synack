@@ -14,7 +14,7 @@ end
 options.parse!
 
 @host = config[:host] || 'localhost'
-@port = config[:port] || 11114
+@port = config[:port] || 1114
 
 if config[:server]
   Synack::Server.start(
